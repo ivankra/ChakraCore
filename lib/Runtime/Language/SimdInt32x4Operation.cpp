@@ -67,7 +67,8 @@ namespace Js
 
         for (uint i = 0; i < 4; i++)
         {
-            if (v.f32[i] >= MIN_INT && v.f32[i] <= MAX_INT)
+            // FIXME: MAX_INT is not exact in float, clang complains about implicit cast
+            if (v.f32[i] >= MIN_INT && v.f32[i] <= (float)MAX_INT)
             {
                 result.u32[i] = (int)(v.f32[i]);
             }
